@@ -1,0 +1,54 @@
+<div class="container" >
+    <div class="uploader" id="uploader" style="display:none" >
+      <div class="card" style="border:none;background-color:#8a0dff!important">
+        <div class="card-body">
+        <form action="/dashboard" method="post" enctype="multipart/form-data">
+         <input type="file" name="file" required>
+        <input type="submit" value="UPLOAD">
+        </form>
+        <br>
+      </div>
+         </div>
+          </div>
+          <br>
+       
+          <% if(allFiles.length==0){ %>
+            <div class="allItems" id="allItems" style="display:block;">
+            <div class="imgVoid" style="display:block">
+              <img src="./images/void.png" alt="VOID" style="height:auto;width:450px;margin-right: 50px;" >
+            </div>
+            <div class="ext" style="margin: 20px;padding:50px">
+              <h3>Nothing here ...</h3>
+              <p>Add files by clicking here....</p>
+            </div>
+            
+            <% }else{ %>
+              <div class="allItems" id="allItems">
+          <% for (i = allFiles.length-1 ; i >=0 ; i--){ %>
+           <!-- modal here -->
+
+<img src=<%= allFiles[i].url %> data-bs-toggle="modal" data-bs-target=#o<%= allFiles[i]._id %> style="height: auto;width: 100px">
+
+<!-- Modal -->
+<div class="modal fade" id=o<%= allFiles[i]._id %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel"><%= allFiles[i].name%></h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <p> <span> <strong>File type </strong> </span>  <%= allFiles[i].format%></p>
+        <p> <span> <strong>Uploaded on</strong> </span>  <%= allFiles[i].date%></p>
+        <p> <span> <strong>URl</strong> </span> <input class="form-control" type="text" value=  <%= allFiles[i].url%> aria-label="Disabled input example" disabled readonly></p>
+    </div>
+    <div class="modal-footer">
+      
+      <a href= <%= allFiles[i].url%> target="_blank"><button type="button" class="btn btn-primary">Open</button></a> 
+    </div>
+  </div>
+</div>
+</div>
+                <% }} %>
+              </div>
+               </div>

@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&display=swap');
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+  
+  }
+  body{
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
+  }
+  .bg{
+    height: 100%;
+    width: 100%;
+    background-color:#232323;
+    background-position: centre;
+    background-size: cover;
+    position: absolute;
+  
+    }
+    .bg-light{
+      background:  linear-gradient(blueviolet,rgb(216, 183, 248));
+      height: 100%;
+    width: 100%;
+    background-position: centre;
+    background-size: cover;
+    position: absolute;
+    }
+  .lrbox{
+    width: 380px;
+    height: 400px;
+    position: relative;
+    margin: 6% auto;
+    background: white;
+    padding: 5px;
+    overflow: hidden;
+   background-color: #f1f1f1;
+   display: none;
+  }
+  
+  .btnbox{
+    width: 220px;
+    margin: 35px auto;
+    position: relative;
+    box-shadow: 0 0 20px 9px #933ded;
+    border-radius: 30px;
+  }
+  .lrbtn{
+    padding: 10px 30px;
+    cursor: pointer;
+    background: transparent;
+    border: 0;
+    outline: none;
+    position: relative;
+  
+  }
+  
+  .container{
+    width: 400px;
+    height: 400px;
+    position: relative;
+    margin: 6% auto;
+    background: white;
+    padding: 5px;
+    overflow: hidden;
+    transform: scale(1);
+    display:none;
+    background-color: #f1f1f1;
+  }
+  #btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background:  #933ded;
+    border-radius: 30px;
+    transition: .5s;
+  
+  }
+  #btn2{
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 110px;
+    height: 100%;
+    background:  #933ded;
+    border-radius: 30px;
+    transition: .5s;
+  
+  }
+  .inputg{
+    top: 180;
+    position: absolute;
+    width: 280px;
+    transition: 0.5s;
+  
+  }
+  .inputf{
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-left:0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 0;
+    outline: none;
+    background: transparent;
+  
+  }
+  .lbtn{
+    width: 85%;
+    padding: 10px 30px;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    background: linear-gradient(to right ,#933ded,rgb(216, 183, 248)); 
+    border: 0;
+    outline: none;
+    border-radius: 30px;
+  
+  
+  }
+  .tickbox
+  { margin: 30px 10px 30px 0;}
+  
+  
+  span
+   { color: #777;
+    font-size: 12px;
+    bottom: 68px;
+    position: absolute;}
+  
+  #login{
+    left: 50px;}
+  
+  #register{
+    left: 450px;
+  }
+  #login2{
+    left: 50px;}
+  
+  #register2{
+    left: 450px;
+  }
+  
+  /* BUBBLES */
+
+  .bubble{
+    position: absolute;
+    bottom:-100px;
+    width:40px;
+    height: 40px;
+    background:#f1f1f1;
+    border-radius:50%;
+    opacity:0.5;
+    animation: rise 10s infinite ease-in;
+  }
+  .bubble:nth-child(1){
+    width:40px;
+    height:40px;
+    left:10%;
+    animation-duration:8s;
+  }
+  .bubble:nth-child(2){
+    width:20px;
+    height:20px;
+    left:20%;
+    animation-duration:5s;
+    animation-delay:1s;
+  }
+  .bubble:nth-child(3){
+    width:50px;
+    height:50px;
+    left:35%;
+    animation-duration:7s;
+    animation-delay:2s;
+  }
+  .bubble:nth-child(4){
+    width:80px;
+    height:80px;
+    left:50%;
+    animation-duration:11s;
+    animation-delay:0s;
+  }
+  .bubble:nth-child(5){
+    width:35px;
+    height:35px;
+    left:55%;
+    animation-duration:6s;
+    animation-delay:1s;
+  }
+  .bubble:nth-child(6){
+    width:45px;
+    height:45px;
+    left:65%;
+    animation-duration:8s;
+    animation-delay:3s;
+  }
+  .bubble:nth-child(7){
+    width:90px;
+    height:90px;
+    left:70%;
+    animation-duration:12s;
+    animation-delay:2s;
+  }
+  .bubble:nth-child(8){
+    width:25px;
+    height:25px;
+    left:80%;
+    animation-duration:6s;
+    animation-delay:2s;
+  }
+  .bubble:nth-child(9){
+    width:15px;
+    height:15px;
+    left:70%;
+    animation-duration:5s;
+    animation-delay:1s;
+  }
+  .bubble:nth-child(10){
+    width:90px;
+    height:90px;
+    left:25%;
+    animation-duration:10s;
+    animation-delay:4s;
+  }
+  @keyframes rise{
+    0%{
+      bottom:-100px;
+      transform:translateX(0);
+    }
+    50%{
+      transform:translate(100px);
+    }
+    100%{
+      bottom:1080px;
+      transform:translateX(-200px);
+    }
+  }
+
+  @media only screen and (max-width: 600px) {
+    .container{
+      display:block;
+      overflow:hidden;
+    }
+    body{
+      overflow:hidden;
+    }
+  
+  }
+  @media only screen and (min-width: 601px) {
+   
+    .lrbox{
+      display: block;
+    }
+    body{
+      overflow:hidden;
+    }
+  }

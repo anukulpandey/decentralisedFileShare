@@ -1,0 +1,284 @@
+<html>
+    <title>TEST</title>
+    <body>
+        <html>
+            <title>SIGN IN</title>
+            <body>
+                <style>
+                    /* my styling */
+                    .input-field {
+                    position: relative;
+                    width: 250px;
+                    height: 44px;
+                    line-height: 44px;
+      }
+      label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        color: #d3d3d3;
+        transition: 0.2s all;
+        cursor: text;
+      }
+      input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        padding: 0.5rem 0;
+        border-bottom: 2px solid #d3d3d3;
+        box-shadow: none;
+        color: #111;
+      }
+      input:invalid {
+        outline: 0;
+      }
+      input:focus,
+      input:valid {
+        border-color: #8a0dff;
+      }
+      input:focus ~ label,
+      input:valid ~ label {
+        font-size: 14px;
+        top: -24px;
+        color: #8a0dff;
+      }
+      .container{
+          width:100%;
+          height:100%;
+          display: flex;
+          margin: 0px;
+          
+      }
+      body{
+        margin: 0px;
+          
+      }
+      .left{
+          width: 30%;
+          display: flex;
+         align-items: center;   
+      }
+      .middle{
+        width: 45%;
+      }
+      .right{
+          width: 25%;
+         background-color: #8a0dff;
+         
+      }
+      .btn{
+    margin-top: 5px;     
+    padding: 9px 92px;
+    border: 0px;
+    font-size: 14px;
+    background-color: #8a0dff;
+    color:#ffff;
+    font-family: 'Times New Roman', Times, serif;
+      }
+      nav ul li a{
+        text-decoration: none;
+    color: white;
+    padding: 15px 10px;
+    font-size: 18;
+      }
+      nav ul {
+        list-style-type: none;
+        display: flex;
+      }
+                </style>
+<style>           
+#login-form
+{
+  display:block;
+}
+
+.form-box 
+{
+  width: 380px;
+  height: 480px;
+  position: relative;
+  margin: 2% auto;
+  padding:10px;
+  overflow:hidden;
+
+}
+.button-box
+{
+  width: 220px;
+  position: relative;
+  background-color: #8a0dff;
+  color: white;
+  margin-left: 42px;
+}
+.toggle-btn
+{
+  padding: 10px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+  color:white;
+}
+
+.input-group-login
+{
+  top: 150;
+  position: absolute;
+  width: 280;
+  transition: .5s;
+}
+.input-group-register
+{ 
+  top: 120px;
+  position: absolute;
+  width: 280px;
+  transition: .5s;
+  z-index: 5;
+}
+
+#login
+{
+  left: 50px;
+}
+#register
+{
+  left: 450px;
+  display: none;
+  z-index: 5;
+}
+.navContainer{
+  padding:20px;
+  margin:2px;
+}
+nav ul li a{
+  cursor: pointer;
+}
+              </style>
+            <div class="container">
+              <div class="left">
+                <div id='login-form' class='login-page'>
+                    <div class="form-box">    
+                        <div class='button-box'>
+                            <div id="btn"></div>
+                                <button
+                                    type='button'onclick='login()'class='toggle-btn'>Log In</button>
+                                <button
+                                    type='button'onclick='register()' class='toggle-btn'>Register</button>
+                            </div>   
+                            <h6 style="color:red;padding-left: 45px;font-size: 10px;"> <%= signinErrors['incorrectPassword'] %></h6>
+                            <h6  style="color:red;padding-left:45px;font-size: 10px;"><%= signinErrors['userNotRegistered'] %></h6>
+                            <h6  style="color:red;padding-left:45px;font-size: 10px;"><%= signupErrors['alreadyExists'] %></h6>
+                            <form id='login' class='input-group-login' action='/signin' method='post'>
+                                <div class="input-field">
+                                    <input type="text" id="username" name="username" required />
+                                    <label for="username">Username:</label>
+                                    
+                                  </div>
+                                  <div class="input-field">
+                                    <input type="password" id="password" name="password" required />
+                                    <label for="password">Password:</label>
+                                  </div>
+                                  <button type="submit" class="btn" onclick = "(e)=>e.preventDefault()">Submit</button>
+                            </form>   
+                            <form id='register' class='input-group-register' action="/signup" method='post'>
+                                <div class="input-field">
+                                    <input type="text" id="Name" name="Name" required />
+                                    <label for="Name">Name:</label>
+                                  </div>
+                                  <div class="input-field">
+                                    <input type="text" id="Username" name="username" required />
+                                    <label for="Username">Username:</label>
+                                    
+                                  </div>
+                                  <div class="input-field">
+                                    <input type="text" id="Password" name="password" required />
+                                    <label for="Password">Password:</label>
+                                  </div>
+                                  <button type="submit" onclick = " console.log('you clicked')"class="btn">Register</button>
+                            </form>   
+                        </div>
+                    </div>
+                </div>
+            <div class="middle">
+              <img src="./images/signin.png" style="width:100%;height:auto" id="viewImg" style="position:absolute;z-index: 15;">
+            </div>
+            <div class="right">
+                <nav>
+                <ul id="menuitems">
+                  <li><a  onclick="home()" class="menuitems">Home</a></li>
+                  <li><a  onclick="about()" class="menuitems">About</a></li>
+                  <li><a onclick="contact()" class="menuitems">Contact</a></li>
+                </ul>
+                <div class="navContainer" id="navContainer">
+                  <img src="./images/home.png" style="height:auto;width:280px">
+          <br>
+          <h3 style="color:white"> Are you looking for free and secure file storing service? </h3>
+          <p style="color:white"> Then you have landed at the correct place </p>
+          <p style="color:white"> Here you can upload UNLIMITED FILES. Yes you heard it right! There is no limit to upload files and that too for free!</p>
+          <p style="color:white"> If it's free is it Bad? For our services the answer is NO WAY !</p>
+          <p style="color:white"> We store your files is a complete decentralized system</p>
+                </div>
+              </nav>
+              </div>
+            </div>
+        </div>
+        <script>
+            var x=document.getElementById('login');
+            var y=document.getElementById('register');
+            var z=document.getElementById('btn');
+            var viewImg = document.getElementById('viewImg')
+
+            function register(){
+                y.style.display="block";
+                x.style.left='-400px';
+                z.style.left='110px';
+                viewImg.src="./images/signup.png"
+                setTimeout(function(){
+                    y.style.left='50px'; 
+                },50)
+                
+            }
+            function login(){
+                x.style.left='50px';
+                y.style.left='450px'; 
+                z.style.left='0px';
+                viewImg.src="./images/signin.png"
+                y.style.zIndex="0"
+                viewImg.style.zIndex="15"
+                setTimeout(function(){
+                    y.style.display="none"
+                },400)
+               }
+       </script>
+
+       <!-- Home about and Contact script -->
+       <script>
+         let navContainer = document.getElementById('navContainer');
+         function home(){
+          navContainer.innerHTML =`
+          <img src="./images/home.png" style="height:auto;width:280px">
+          <br>
+          <h3 style="color:white"> Are you looking for free and secure file storing service? </h3>
+          <p style="color:white"> Then you have landed at the correct place </p>
+          <p style="color:white"> Here you can upload UNLIMITED FILES. Yes you heard it right! There is no limit to upload files and that too for free!</p>
+          <p style="color:white"> If it's free is it Bad? For our services the answer is NO WAY !</p>
+          <p style="color:white"> We store your files is a complete decentralized system</p>
+          `
+         }
+         function about(){
+          navContainer.innerHTML =`
+          <img src="./images/welcome.png" style="height:auto;width:280px">
+          <p style="color:white">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro placeat eius nulla odio libero eaque mollitia nostrum ex. Ipsum vitae eligendi perferendis enim earum ex magni eos, excepturi, expedita a aliquid laboriosam.</p>
+          `
+         }
+         function contact(){
+          navContainer.innerHTML =`
+          <img src="./images/about.png" style="height:auto;width:280px">
+          <p style="color:white">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro placeat eius nulla odio libero eaque mollitia nostrum ex. Ipsum vitae eligendi perferendis enim earum ex magni eos, excepturi, expedita a aliquid laboriosam.</p>
+          `
+         }
+       </script>
+    </body>
+</html>

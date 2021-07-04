@@ -1,0 +1,25 @@
+{
+  "name": "fileshare",
+  "version": "1.0.0",
+  "description": "This is a file sharing website which we made in our hackathon",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "Veevaa And Anukul",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cookieparser": "^0.1.0",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "ipfs-http-client": "^50.1.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.9",
+    "mongoose": "^5.13.0",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.9"
+  }
+}

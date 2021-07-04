@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel="stylesheet" href="./css/signin.css">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+
+</head>
+<body>
+    
+<style>
+    .myBtn{
+        background-color:#ffffff;
+        color: #933ded;
+        border-radius: 20px;
+        margin: 10px;
+    }
+    .modeBtn{
+        border: none;
+        padding: 12px;
+        border-radius: 100%;
+    }
+
+</style> 
+<div class="bg" id='backgroundEr' >
+    <a href="/"><button class="myBtn lrbtn"> HOME </button></a>
+    <a class=" modeBtn" onclick="modeChanger()">
+        <img src="./svg/sun.svg" style="filter:invert()" id="mode">
+    </a>
+    <div class="lrbox" >
+        <% if (signinErrors['incorrectPassword']){ %>
+          <h6 style="    margin: 3px 0px 26px 82px;"> <%= signinErrors['incorrectPassword'] %></h6>
+        <% }else if(signinErrors['userNotRegistered']){%>
+            <h6 style="    margin: 3px 0px 26px 82px;"> <%= signinErrors['userNotRegistered'] %></h6>
+        <% }else if(signupErrors['alreadyExists']){%>
+            <h6 style="    margin: 3px 0px 26px 82px;"> <%= signupErrors['alreadyExists'] %></h6>
+            <% } %>
+        <div class="btnbox">
+            <div id="btn"></div>
+            <button type="button" class="lrbtn" id="logbtn"onclick="login()">Log In</button>
+            <button type="button" class="lrbtn" id="regbtn"onclick="register()">Register</button>
+        </div>
+        <form id="login" class="inputg"  action="/signin" method="post">
+            <input type="text" class="inputf" name="username" placeholder="Username"required>
+            <input type="password" class="inputf" name="password" placeholder="Password"required>
+            <button type="submit" class="lbtn">Log In</button>
+        </form>
+        <form id="register" class="inputg" action="/signup" method="post">
+            <input type="text" class="inputf" name="name" placeholder="Full Name"required>
+            <input type="text" class="inputf" name="username" placeholder="Username"required>
+            <input type="password" class="inputf" name="password" placeholder="Password"required>
+            <button type="submit" class="lbtn">Register</button>
+        </form>
+    </div>
+    
+    <div class="formobile" >
+        <div class="container">
+            <div class="errors">
+                <% if (signinErrors['incorrectPassword']){ %>
+                    <h6 style="    margin: 3px 0px 26px 82px;"> <%= signinErrors['incorrectPassword'] %></h6>
+                  <% }else if(signinErrors['userNotRegistered']){%>
+                      <h6 style="    margin: 3px 0px 26px 82px;"> <%= signinErrors['userNotRegistered'] %></h6>
+                  <% }else if(signupErrors['alreadyExists']){%>
+                      <h6 style="    margin: 3px 0px 26px 82px;"> <%= signupErrors['alreadyExists'] %></h6>
+                      <% } %>
+            </div>
+            <div class="btnbox">
+                <div id="btn2"></div>
+                <button type="button" class="lrbtn" id="logbtn2"onclick="login2()">Log In</button>
+                <button type="button" class="lrbtn" id="regbtn2"onclick="register2()">Register</button>
+            </div>
+            <form id="login2" class="inputg"  action="/signin" method="post">
+                <input type="text" class="inputf" name="username" placeholder="Username"required>
+                <input type="password" class="inputf" name="password" placeholder="Password"required>
+                <button type="submit" class="lbtn">Log In</button>
+            </form>
+            <form id="register2" class="inputg" action="/signup" method="post">
+                <input type="text" class="inputf" name="name" placeholder="Full Name"required>
+                <input type="text" class="inputf" name="username" placeholder="Username"required>
+                <input type="password" class="inputf" name="password" placeholder="Password"required>
+                <button type="submit" class="lbtn">Register</button>
+            </form>
+        </div>
+
+    </div>
+<section class="sticky">
+    <div class="bubbles">
+        <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+      <div class="bubble"></div>
+    </div>
+  </section>
+</div>
+<h2>JUST A STEP AWAY</h2>
+
+<script>
+    var x = document.getElementById("login");
+    var y = document.getElementById("register");
+    var z = document.getElementById("btn");
+    var regbtn = document.getElementById("regbtn");
+    var logbtn = document.getElementById("logbtn")
+     
+     function register()
+     {x.style.left = "-400px";
+      y.style.left = "50px";
+      z.style.left = "110px";
+      regbtn.style.color = "white";
+      logbtn.style.color ="black";
+    }
+      function login()
+     {x.style.left = "50px";
+      y.style.left = "450px";
+      z.style.left = "0px";
+      regbtn.style.color = "black";
+      logbtn.style.color ="white";
+      }
+      let whichMode="dark"
+      function modeChanger(){
+          let backgroundEr=document.getElementById('backgroundEr');
+          let mode = document.getElementById('mode');
+          
+          console.log(whichMode)
+          if(whichMode=="dark"){
+              console.log('bhai')
+        whichMode="light"
+          backgroundEr.setAttribute('class','bg-light');
+          mode.src ="./svg/moon-fill.svg";
+          }else{
+              console.log('yahan hu')
+              whichMode="dark"
+              backgroundEr.setAttribute('class','bg');
+          mode.src ="./svg/sun.svg";
+          }
+
+      }
+</script>
+<script>
+    // for mobile
+    var x2 = document.getElementById("login2");
+    var y2 = document.getElementById("register2");
+    var z2 = document.getElementById("btn2");
+    var regbtn2 = document.getElementById("regbtn2");
+    var logbtn2 = document.getElementById("logbtn2");
+     
+    function register2()
+     {x2.style.left = "-400px";
+      y2.style.left = "50px";
+      z2.style.left = "110px";
+      regbtn2.style.color = "white";
+      logbtn2.style.color ="black";
+    }
+      function login2()
+     {x2.style.left = "50px";
+      y2.style.left = "450px";
+      z2.style.left = "0px";
+      regbtn2.style.color = "black";
+      logbtn2.style.color ="white";
+      }
+</script>
+</body>
+</html>

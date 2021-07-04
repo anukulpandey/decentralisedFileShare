@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+  </head>
+  <body>
+    <header class="header">
+        <div class="header__container">
+        
+
+            <a href="#" class="header__logo">WELCOME! <%= user.username %> </a>
+
+            
+
+            
+        </div>
+    </header>
+
+    <!--========== NAV ==========-->
+    <div class="nav" id="navbar">
+        <nav class="nav__container">
+            <div>
+                <a href="#" class="nav__link nav__logo">
+                    <i class='bx bxs-disc nav__icon' ></i>
+                    <span class="nav__logo-name">File Share</span>
+                </a>
+
+                <div  class="nav__list">
+                    <div class="nav__items">
+                       
+                        <a onclick="handleClickHome()" class="nav__link active">
+                            <i class='bx bx-home nav__icon' ></i>
+                            <span class="nav__name">Home</span>
+                        </a>
+                        
+                        <div class="nav__dropdown">
+                           
+                          
+                          
+                          
+                          
+                          
+                            <a href="#" class="nav__link">
+                                <i class='bx bx-user nav__icon' ></i>
+                                <span class="nav__name">Uploads</span>
+                                <i class='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                            </a>
+
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                    
+                                    <a onclick="handleNewUpload()" class="nav__dropdown-item">Upload new</a>
+                                    
+                                    <!-- <a href="#" class="nav__dropdown-item">Favourites</a> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="nav__items">
+
+
+                        <div class="nav__dropdown">
+                            <div class="nav__dropdown-collapse">
+                                <div class="nav__dropdown-content">
+                                   
+                                </div>   
+
+
+                           
+                            </div>
+
+                        </div>
+
+                       
+                        <a href="/" class="nav__link">
+                            <i class='bx bx-bookmark nav__icon' ></i>
+                            <span class="nav__name">About Us</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/signout" class="nav__link nav__logout">
+                <i class='bx bx-log-out nav__icon' ></i>
+                <span class="nav__name">Log Out</span>
+            </a>
+        </nav>
+    </div>
+
+    <!--========== CONTENTS ==========-->
+    <main>
+        <section>            
+            <div class="container" id="container">    
+                      <% if(allFiles.length==0){ %>
+                        
+                        <div class="allItems" id="allItems" style="display:block;">
+                        <div class="imgVoid" style="display:block">
+                          <img src="./svg/nothing.svg" alt="VOID" style="height:auto;width:450px;margin-right: 50px;margin: auto;" >
+                        </div>
+                        <div class="ext" style="margin: 20px;padding:50px">
+                          <h3>Nothing here ...</h3>
+                          <p>Add files by going to left menu bar then <span><strong>Upload new</strong></span> </p>
+                        </div>
+                        
+                        <% }else{ %>
+                           
+                          <div class="allItems" id="allItems">
+                      <% for (i = allFiles.length-1 ; i >=0 ; i--){ %>
+                       <!-- modal here -->
+            
+            <img src=<%= allFiles[i].url %> data-bs-toggle="modal" data-bs-target=#o<%= allFiles[i]._id %> style="height: auto;width: 300px" class="uploaded-img">
+            
+            <!-- Modal -->
+            <div class="modal fade" id=o<%= allFiles[i]._id %> tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel"><%= allFiles[i].name%></h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p> <span> <strong>File type </strong> </span>  <%= allFiles[i].format%></p>
+                    <p> <span> <strong>Uploaded on</strong> </span>  <%= allFiles[i].date%></p>
+                    <p> <span> <strong>URl</strong> </span> <input class="form-control" type="text" value=  <%= allFiles[i].url%> aria-label="Disabled input example" disabled readonly></p>
+                </div>
+                <div class="modal-footer">
+                  
+                  <a href= <%= allFiles[i].url%> target="_blank"><button type="button" class="btn btn-primary">Open</button></a> 
+                </div>
+              </div>
+            </div>
+            </div>
+                            <% }} %>
+                          </div>
+                          </div>
+                           </div>
+        </section>
+    </main>
+<br>
+<script src="./js/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  </body>
+</html>

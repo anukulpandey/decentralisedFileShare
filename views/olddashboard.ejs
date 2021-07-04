@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <style>
+      body{
+        background-color:#8a0dff;
+      }
+    .itemContainer{
+      margin: 10px;
+      width:200px;
+      height:400px;
+      display: inline-block;
+      padding: 5px;
+      border-radius:6px;
+      background-color:white;
+      
+    }
+    .allItems{
+      display: flex;
+      justify-content:center;
+      width:95%;
+      flex-wrap: wrap;
+    }
+    .items{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content:center;
+    }
+    #fname{
+      padding: 5px;
+    background-color: #dbdbdb;
+    border-radius: 5px;
+    margin: 2px;
+    }
+    span{
+      font-weight: bold;
+    }
+    .copyBtn {
+    border: 0px;
+    padding: 8px 66px;
+    background-color: #8a0dff;
+    border-radius: 5px;
+    color:white;
+}
+.imageContainer{
+  height:175px;
+  width:100%;
+  background-color:#8a0dff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.Btn{
+  text-align: center;
+    text-decoration: none;
+    padding: 6px 77px;
+    background-color: #c6c6c6;
+    color: white;
+    border-radius: 10px;
+}
+
+body {
+  background-color: #efeff5;;
+}
+.btn {
+  height: 50px;
+  line-height: 50px;  
+  width: 50px;  
+  font-size: 2em;
+  font-weight: bold;
+  border-radius: 50%;
+  background-color: #8a0dff;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+  position: sticky;
+  bottom:10px;
+  float: left;
+}
+
+form input{
+  padding:10px;
+  margin:10px;
+  border-radius:10px;
+  border:none;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Oswald:400);
+
+.navigation {
+  width: 100%;
+  background-color: #8a0dff;
+}
+
+img {
+  width: 25px;
+  border-radius: 50px;
+  float: left;
+}
+
+.logout {
+  font-size: .8em;
+  font-family: 'Oswald', sans-serif;
+	position: relative;
+  right: -18px;
+  bottom: -4px;
+  overflow: hidden;
+  letter-spacing: 3px;
+  opacity: 0;
+  transition: opacity .45s;
+  -webkit-transition: opacity .35s;
+  
+}
+
+.button {
+	text-decoration: none;
+	float: right;
+  padding: 12px;
+  margin: 15px;
+  color: white;
+  width: 25px;
+  background-color: #8a0dff;
+  transition: width .35s;
+  -webkit-transition: width .35s;
+  overflow: hidden
+}
+
+a:hover {
+  width: 100px;
+}
+
+a:hover .logout{
+  opacity: .9;
+}
+
+a {
+  text-decoration: none;
+}
+.infoContainer{
+  width:100%;
+}
+    </style>
+    <nav>
+      
+<div class="navigation">
+  
+	<a class="button" href="/signout">
+  	<img src="https://ipfs.io/ipfs/QmV5d4pXkewZEZLkeX7HVjDVnnRBUpYVwR6aRA8YpsiNAW">
+  
+  <div class="logout">LOGOUT</div>
+
+	</a>
+  
+</div>
+
+  
+
+    </nav>
+   <h1>Welcome <%= user.username %></h1>
+    <div class="container" >
+      <div class="uploader" id="uploader" style="display:none" >
+        <div class="card" style="border:none;background-color:#8a0dff!important">
+          <div class="card-body">
+          <form action="/dashboard" method="post" enctype="multipart/form-data">
+           <input type="file" name="file" required>
+          <input type="submit" value="UPLOAD">
+          </form>
+          <br>
+        </div>
+           </div>
+            </div>
+            <br>
+            
+            <% if(allFiles.length==0){ %>
+              <div class="allItems" id="allItems" style="display:block;">
+              <div class="imgVoid" style="display:block">
+                <img src="./images/void.png" alt="VOID" style="height:auto;width:450px;margin-right: 50px;" >
+              </div>
+              <div class="ext" style="margin: 20px;padding:50px">
+                <h3>Nothing here ...</h3>
+                <p>Add files by clicking here....</p>
+              </div>
+              
+              <% }else{ %>
+                <div class="allItems" id="allItems">
+            <% for (i = allFiles.length-1 ; i >=0 ; i--){ %>
+              <div class="itemContainer">
+                <div class="items">
+                  <div class="imageContainer">
+                    <img src=<%= allFiles[i].url %>  alt="" style="height: auto;width: 100px">
+                  </div>
+                  <div class="infoContainer">
+                    <p id="fname"> <span>File Name: </span> <%= allFiles[i].name%></p>
+                    <p>File type: <%= allFiles[i].format%></p>
+                    <input type="text" id=<%= allFiles[i].date %> value=<%= allFiles[i].url %> > 
+                    <p></p>
+                    <a href=<%= allFiles[i].url %> target="_blank" class="Btn">Open</a>
+                    <p style="font-size: 12px;">Uploaded on: <%= allFiles[i].date%></p>
+                  </div>
+                
+              </div>
+            </div>
+                  <% }} %>
+                </div>
+      </div>
+       <!-- Simple floating button -->
+       <div class="btn" onclick="func2()">
+        +
+     </div>
+
+<br>
+
+<div class="information" id = "information" style='display:none'>
+  <p>Please choose the file you want to upload and click on upload button. The file will be uploaded successfuly. You can upload any type of file you want , if you want to host any static website then feel free to upload it here as well.</p>
+</div>
+
+    <script>
+      function func2(){
+        let uploader = document.getElementById('uploader');
+        let allItems= document.getElementById('allItems');
+        let information= document.getElementById('information');
+          uploader.style.display="block";
+          allItems.style.display="none "
+          information.style.display="block";
+
+      }
+</script>
+  </body>
+</html>

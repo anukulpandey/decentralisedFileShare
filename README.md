@@ -30,10 +30,9 @@ Start the server
 
   
 ## Screenshots
-
+![App Screenshot](https://ipfs.io/ipfs/QmfVV7Di5yHWwG3i282kFePbNwdN2i37cTqpLzvZP6HjEf)
 ![App Screenshot](https://ipfs.io/ipfs/QmfV1C6ttErT6jzMxrZcDACG3wtTCqNdfa9iKSWW644SMU)
-
-  
+![App Screenshot](https://ipfs.io/ipfs/QmWrJ1jzXKU5NCmWaGKe9b7aScb1vmqbBcMz8RYuPwuP1K)
 ## Authors
 
 - [@anukulpandey](https://www.github.com/anukulpandey)
